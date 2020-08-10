@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar {{Cliente}}</title>
+    {% load static %}
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+</head>
+
+<body>
+    
+
+    <ul>
+        <l1><a href='/'>{{ Menu}}</a></l1>
+       
+        <l1><a href='/listarcliente'>{{ Cliente }}</a></l1>
+        
+        <l1><a href='/listarproducto'>{{ Producto }}</a></l1>
+
+    </ul>
+    <h1>Listado de {{Cliente}}</h1>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ruc</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Producto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <body>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.ruc }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.direccion }}</td>
+                <td>{{ cliente.producto }}</td>
+                
+                <td>
+                    <ul>
+                        <l1><a class="btn btn-primary" href="{% url 'cliente' %}">Ingresar</a></l1>
+                        <l1><a class="btn btn-primary" href="{% url 'editarcliente' cliente.id %}">Modifcar</a></l1>
+                        <l1><a class="btn btn-primary" href="{% url 'eliminarcliente' cliente.id %}">Eliminar</a></l1>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </body>
+
+    </table>
+</body>
+
+</html>
